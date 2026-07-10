@@ -12,6 +12,7 @@ import { Menu } from 'primeng/menu';
 import { MenuModule } from 'primeng/menu';
 import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
+import { TooltipModule } from 'primeng/tooltip';
 import { FileDto } from '../../models/dtos/FileDto';
 import { FolderDto } from '../../models/dtos/FolderDto';
 import { FolderContentItemDto } from '../../models/dtos/FolderContentItemDto';
@@ -56,6 +57,7 @@ type CloudSort =
     DialogModule,
     InputTextModule,
     ConfirmDialogModule,
+    TooltipModule,
   ],
   providers: [ConfirmationService],
   templateUrl: './cloud.component.html',
@@ -792,7 +794,7 @@ export class CloudComponent implements OnInit {
     this.fileContent = '';
   }
 
-  private getParentRelativePath(fullPath: string): string {
+  getParentRelativePath(fullPath: string): string {
     const relative = this.getRelativePath(fullPath);
     if (!relative || relative === '/') return '/';
     const lastSlash = relative.lastIndexOf('/');
